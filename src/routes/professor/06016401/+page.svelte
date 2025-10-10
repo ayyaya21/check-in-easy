@@ -1,5 +1,5 @@
 <script>
-  const weeks = ["WEEK 01", "WEEK 02", "WEEK 03", "WEEK 04", "WEEK 05", "WEEK 06", "WEEK 07", "WEEK 08", "WEEK 09", "WEEK 10"];
+  let weeks = ["WEEK 01", "WEEK 02", "WEEK 03", "WEEK 04", "WEEK 05", "WEEK 06", "WEEK 07", "WEEK 08", "WEEK 09", "WEEK 10"];
   const students = [
     { id: "6607XXXX Kritsada Aneg.", count: 4 },
     { id: "6607XXXX Kritsada Aneg.", count: 3 },
@@ -8,6 +8,12 @@
     { id: "6607XXXX Kritsada Aneg.", count: 3 },
     { id: "6607XXXX Kritsada Aneg.", count: 3 },
   ];
+
+  function addWeek() {
+    let newWeekNumber = weeks.length + 1;
+    let newWeek = `WEEK ${newWeekNumber < 10 ? '0' : ''}${newWeekNumber}`;
+    weeks = [...weeks, newWeek];
+  }
 </script>
 
 <div class="min-h-screen bg-gray-100 flex justify-center items-center p-2">
@@ -17,9 +23,14 @@
     </div>
 
     <div class="bg-gray-200 rounded-xl p-4 flex flex-col">
-      <h2 class="text-center text-white bg-blue-500 font-semibold py-3 rounded-md">
-        WEEK
-      </h2>
+      <div class="relative">
+        <h2 class="text-center text-white bg-blue-500 font-semibold py-3 rounded-md">
+          WEEK
+        </h2>
+        <button on:click={addWeek} class="absolute top-1/2 -translate-y-1/2 right-3 w-8 h-8 rounded-full bg-blue-700 text-white flex justify-center items-center text-xl font-bold leading-none p-1">
+          +
+        </button>
+      </div>
       <div class="mt-4 space-y-3 h-64 overflow-y-auto flex-grow">
         {#each weeks as week}
         <a href="/professor/06016401/{week.toLowerCase().replace(' ', '-')}" class="block">
