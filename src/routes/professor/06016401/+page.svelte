@@ -8,6 +8,13 @@
     { id: "6607XXXX Kritsada Aneg.", count: 3 },
     { id: "6607XXXX Kritsada Aneg.", count: 3 },
   ];
+  const mytables = [
+    { No: 1, student_id: "66070007", student_name: "kritsada", student_surname: "anegtanagul", section: 2, WEEK_01: 1, WEEK_02: 0, WEEK_03: 0.5},
+    { No: 2, student_id: "66070007", student_name: "kritsada", student_surname: "anegtanagul", section: 2, WEEK_01: 1, WEEK_02: 0, WEEK_03: 0.5},
+    { No: 3, student_id: "66070007", student_name: "kritsada", student_surname: "anegtanagul", section: 2, WEEK_01: 1, WEEK_02: 0, WEEK_03: 0.5},
+    { No: 4, student_id: "66070007", student_name: "kritsada", student_surname: "anegtanagul", section: 2, WEEK_01: 1, WEEK_02: 0, WEEK_03: 0.5},
+    { No: 5, student_id: "66070007", student_name: "kritsada", student_surname: "anegtanagul", section: 2, WEEK_01: 1, WEEK_02: 0, WEEK_03: 0.5},
+  ];
 </script>
 
 <div class="min-h-screen bg-gray-100 flex justify-center items-center p-2">
@@ -48,5 +55,64 @@
         {/each}
       </div>
     </div>
+
+    <div class="col-span-2 bg-gray-200 flex justify-center items-center w-full">
+      <table class="min-w-full border border-black">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border border-black px-4 py-2">NO.</th>
+            <th class="border border-black px-4 py-2">Student ID</th>
+            <th class="border border-black px-4 py-2">Name</th>
+            <th class="border border-black px-4 py-2">Section</th>
+            <th class="border border-black px-4 py-2">14/04</th>
+            <th class="border border-black px-4 py-2">21/04</th>
+            <th class="border border-black px-4 py-2">28/04</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each mytables as row}
+            <tr>
+              <!-- No -->
+              <td class="border border-black px-4 py-2 text-center">{row.No}</td>
+
+              <!-- Student ID -->
+              <td class="border border-black px-4 py-2 text-center">{row.student_id}</td>
+
+              <!-- Student Name -->
+              <td class="border border-black px-4 py-2 text-center">{row.student_name} {row.student_surname}</td>
+
+              <!-- Section -->
+              <td class="border border-black px-4 py-2 text-center">{row.section}</td>
+
+              <!-- WEEK_01 -->
+              <td class="border border-black px-4 py-2 text-center
+                        {row.WEEK_01 === 1 ? 'bg-green-200 text-green-800' : 
+                          row.WEEK_01 === 0.5 ? 'bg-yellow-200 text-yellow-800' : 'bg-red-200 text-red-800'}">
+                {row.WEEK_01 === 1 ? 'Present' : 
+                row.WEEK_01 === 0.5 ? 'Late' : 'Absent'}
+              </td>
+
+              <!-- WEEK_02 -->
+              <td class="border border-black px-4 py-2 text-center
+                        {row.WEEK_02 === 1 ? 'bg-green-200 text-green-800' : 
+                          row.WEEK_02 === 0.5 ? 'bg-yellow-200 text-yellow-800' : 'bg-red-200 text-red-800'}">
+                {row.WEEK_02 === 1 ? 'Present' : 
+                row.WEEK_02 === 0.5 ? 'Late' : 'Absent'}
+              </td>
+
+              <!-- WEEK_03 -->
+              <td class="border border-gray-300 px-4 py-2 text-center
+                        {row.WEEK_03 === 1 ? 'bg-green-200 text-green-800' : 
+                          row.WEEK_03 === 0.5 ? 'bg-yellow-200 text-yellow-800' : 'bg-red-200 text-red-800'}">
+                {row.WEEK_03 === 1 ? 'Present' : 
+                row.WEEK_03 === 0.5 ? 'Late' : 'Absent'}
+              </td>
+
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>
