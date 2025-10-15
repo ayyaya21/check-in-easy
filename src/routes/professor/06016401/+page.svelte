@@ -27,7 +27,7 @@
         <h2 class="text-center text-white bg-blue-500 font-semibold py-3 rounded-md">
           WEEK
         </h2>
-        <button on:click={addWeek} class="absolute top-1/2 -translate-y-1/2 right-3 w-8 h-8 rounded-full bg-blue-700 text-white flex justify-center items-center text-xl font-bold leading-none p-1">
+        <button on:click={addWeek} class="absolute top-1/2 -translate-y-1/2 right-3 w-8 h-8 rounded-full bg-blue-700 text-white flex justify-center items-center text-xl font-bold leading-none transition-transform duration-200 hover:scale-110">
           +
         </button>
       </div>

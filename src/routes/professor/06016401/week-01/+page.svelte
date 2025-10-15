@@ -17,7 +17,7 @@
       </div>
       
       <div class="mt-8 w-full space-y-4">
-        <button class="w-full bg-green-500 text-white font-bold py-4 rounded-lg shadow-md hover:bg-green-600 transition-colors duration-200">
+        <button class="w-full bg-blue-500 text-white font-bold py-4 rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-200">
           START
         </button>
         <div class="grid grid-cols-2 gap-4">
