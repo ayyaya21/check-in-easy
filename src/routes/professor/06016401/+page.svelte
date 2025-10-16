@@ -15,6 +15,23 @@
     { No: 4, student_id: "66070007", student_name: "kritsada", student_surname: "anegtanagul", section: 2, WEEK_01: 1, WEEK_02: 0, WEEK_03: 0.5},
     { No: 5, student_id: "66070007", student_name: "kritsada", student_surname: "anegtanagul", section: 2, WEEK_01: 1, WEEK_02: 0, WEEK_03: 0.5},
   ];
+
+  // Logic ใหม่: ดึงรหัสวิชาจาก URL ของหน้าปัจจุบัน
+  const pathSegments = window.location.pathname.split('/');
+  
+  // พยายามหารหัสวิชาที่อยู่ถัดจาก 'professor' ใน URL
+  const professorIndex = pathSegments.indexOf('professor');
+  let courseId = 'default-course-id'; // ค่าเริ่มต้น (Fallback)
+
+  if (professorIndex !== -1 && pathSegments.length > professorIndex + 1) {
+    // กรณีที่ URL เป็น /.../professor/06016401/...
+    courseId = pathSegments[professorIndex + 1];
+  } else if (pathSegments.length > 1) {
+    // กรณีที่รหัสวิชาอาจจะเป็น Segment ที่ 1 หรือ 2 และไม่มี 'professor' นำหน้า
+    // นี่เป็นการเดาโครงสร้าง URL ที่ดีที่สุดจากข้อมูลที่มี
+    courseId = pathSegments[1]; 
+  }
+  // courseId ที่ได้จะถูกใช้ในลิงก์ด้านล่าง
 </script>
 
 <div class="min-h-screen bg-gray-100 flex justify-center items-center p-2">
@@ -24,18 +41,29 @@
     </div>
 
     <div class="bg-gray-200 rounded-xl p-4 flex flex-col">
-      <h2 class="text-center text-white bg-blue-500 font-semibold py-3 rounded-md">
-        WEEK
-      </h2>
+      <div class="flex justify-between items-center text-white bg-blue-500 font-semibold py-3 px-4 rounded-md">
+        <h2 class="text-center font-semibold text-white">
+          WEEK
+        </h2>
+        <button
+            class="w-8 h-8 bg-green-500 text-white text-xl font-bold rounded-full shadow-md hover:bg-green-600 transition-colors duration-200 flex items-center justify-center"
+            on:click={() => alert('เพิ่มสัปดาห์ใหม่!')}
+            aria-label="Add New Week"
+        >
+            +
+        </button>
+      </div>
+      
       <div class="mt-4 space-y-3 h-64 overflow-y-auto flex-grow">
         {#each weeks as week}
-        <a href="/professor/06016401/{week.toLowerCase().replace(' ', '-')}" class="block">
+        <a href="/professor/{courseId}/{week.toLowerCase().replace(' ', '-')}" class="block">
           <div class="bg-gray-400 text-center text-black font-bold py-3 rounded-lg hover:bg-gray-500 transition-colors duration-200">
             {week}
           </div>
         </a>
         {/each}
       </div>
+      
     </div>
 
     <div class="bg-gray-200 rounded-xl p-4">
@@ -72,19 +100,14 @@
         <tbody>
           {#each mytables as row}
             <tr>
-              <!-- No -->
               <td class="border border-black px-4 py-2 text-center">{row.No}</td>
 
-              <!-- Student ID -->
               <td class="border border-black px-4 py-2 text-center">{row.student_id}</td>
 
-              <!-- Student Name -->
               <td class="border border-black px-4 py-2 text-center">{row.student_name} {row.student_surname}</td>
 
-              <!-- Section -->
               <td class="border border-black px-4 py-2 text-center">{row.section}</td>
 
-              <!-- WEEK_01 -->
               <td class="border border-black px-4 py-2 text-center
                         {row.WEEK_01 === 1 ? 'bg-green-200 text-green-800' : 
                           row.WEEK_01 === 0.5 ? 'bg-yellow-200 text-yellow-800' : 'bg-red-200 text-red-800'}">
@@ -92,7 +115,6 @@
                 row.WEEK_01 === 0.5 ? 'Late' : 'Absent'}
               </td>
 
-              <!-- WEEK_02 -->
               <td class="border border-black px-4 py-2 text-center
                         {row.WEEK_02 === 1 ? 'bg-green-200 text-green-800' : 
                           row.WEEK_02 === 0.5 ? 'bg-yellow-200 text-yellow-800' : 'bg-red-200 text-red-800'}">
@@ -100,7 +122,6 @@
                 row.WEEK_02 === 0.5 ? 'Late' : 'Absent'}
               </td>
 
-              <!-- WEEK_03 -->
               <td class="border border-gray-300 px-4 py-2 text-center
                         {row.WEEK_03 === 1 ? 'bg-green-200 text-green-800' : 
                           row.WEEK_03 === 0.5 ? 'bg-yellow-200 text-yellow-800' : 'bg-red-200 text-red-800'}">
