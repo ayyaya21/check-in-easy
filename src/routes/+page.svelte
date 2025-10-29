@@ -5,7 +5,10 @@
     import * as Card from "$lib/components/ui/card/index.js";
    </script>
 
-<div class="flex min-h-screen items-center justify-center">
+<div class="flex flex-col min-h-screen items-center justify-center gap-5">
+    <div class="">
+        Check-in-easy
+    </div>
     <Card.Root class="w-full max-w-sm">
         <Card.Header>
          <Card.Title>Login to your account</Card.Title>
