@@ -5,7 +5,7 @@
 
 <nav class="flex justify-between items-center bg-white shadow-md rounded-xl px-6 py-3 m-4">
   <a href="/">
-    <h4 class="text-2xl font-bold text-blue-600 tracking-tight">
+    <h4 class="text-2xl font-bold text-blue-600 tracking-tight uppercase">
       Check-in-easy
     </h4>
   </a>
