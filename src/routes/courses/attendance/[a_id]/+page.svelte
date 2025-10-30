@@ -2,8 +2,8 @@
   let loading = $state(false);
   let success = $state(false);
   let error: string = $state("")
-  let studentId = $state("66070070");
-  let studentName = $state("Tanansorn Sirirath");
+  let studentId = $state("");
+  let studentName = $state("");
   let message = $state("");
   let {data} = $props()
   let { attendance } = data

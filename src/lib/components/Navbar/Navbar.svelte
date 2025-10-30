@@ -1,6 +1,6 @@
 <script lang="ts">
     import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
-    import { isAdmin, emailStore } from '../../../stores/auth'
+    import { emailStore } from '../../../stores/auth'
 </script>
 
 <nav class="flex justify-between items-center bg-white shadow-md rounded-xl px-6 py-3 m-4">
@@ -22,14 +22,13 @@
 
     <DropdownMenu.Content class="bg-white shadow-lg rounded-lg p-2 w-40">
       <DropdownMenu.Group>
-        <DropdownMenu.Label class="px-2 py-1 text-sm font-semibold text-gray-500">{$emailStore}</DropdownMenu.Label>
+        <DropdownMenu.Label class="px-2 py-1 text-sm font-semibold text-gray-500">{$emailStore.split('@')[0]}</DropdownMenu.Label>
         <DropdownMenu.Separator class="my-1 border-t" />
+        <a href="/api/logout">
         <DropdownMenu.Item class="px-3 py-2 rounded-md hover:bg-gray-100 cursor-pointer">
-          Profile
-        </DropdownMenu.Item>
-        <DropdownMenu.Item class="px-3 py-2 rounded-md hover:bg-gray-100 cursor-pointer">
-          Logout
-        </DropdownMenu.Item>
+            LOGOUT
+          </DropdownMenu.Item>
+        </a>
       </DropdownMenu.Group>
     </DropdownMenu.Content>
   </DropdownMenu.Root>

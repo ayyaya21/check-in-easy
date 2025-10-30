@@ -35,7 +35,6 @@
 		"@auth/sveltekit": "^1.11.1",
 		"@aws-sdk/client-dynamodb": "^3.919.0",
 		"@aws-sdk/lib-dynamodb": "^3.919.0",
-		"@sveltejs/adapter-node": "^5.4.0",
 		"@tailwindcss/vite": "^4.1.13",
 		"aws-sdk": "^2.1692.0",
 		"dotenv": "^17.2.3",

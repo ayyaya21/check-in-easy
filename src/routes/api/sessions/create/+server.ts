@@ -4,8 +4,6 @@ import { addAttendanceSession } from '$lib/db';
 export async function POST({ request }) {
   try {
     const { courseId, weekNumber, lat, lon, radiusMeters, startTime, endTime } = await request.json();
-    console.log({ courseId, weekNumber, lat, lon, radiusMeters, startTime, endTime });
-
     if (!courseId || !weekNumber || !lat || !lon || !radiusMeters || !startTime || !endTime) {
       return json({ error: 'Missing required fields' }, { status: 400 });
     }
