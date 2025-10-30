@@ -12,16 +12,16 @@ export async function POST({ request, cookies }) {
   cookies.set("email", email, {
     path: "/",
     httpOnly: true,
-    sameSite: "strict",
-    secure: process.env.NODE_ENV === "production",
+    sameSite: "none",
+    secure: true,
     maxAge: 60 * 60 * 24 * 7,
   });
 
   cookies.set("isAdmin", isAdmin + "", {
     path: "/",
     httpOnly: true,
-    sameSite: "strict",
-    secure: process.env.NODE_ENV === "production",
+    sameSite: "none",
+    secure: true,
     maxAge: 60 * 60 * 24 * 7,
   });
 
