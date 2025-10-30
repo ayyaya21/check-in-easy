@@ -1,14 +1,10 @@
 import AWS from 'aws-sdk';
-import {
-  AWS_ACCESS_KEY_ID,
-  AWS_SECRET_ACCESS_KEY,
-  AWS_DEFAULT_REGION,
-} from '$env/static/private';
 
+// อย่าเอาไปเลยกัปปี้
 AWS.config.update({
-  region: AWS_DEFAULT_REGION!,
-  accessKeyId: AWS_ACCESS_KEY_ID!,
-  secretAccessKey: AWS_SECRET_ACCESS_KEY!,
+  region: "ap-southeast-2"!,
+  accessKeyId: "AKIAY4ZTJA6LBCOJTPRK"!,
+  secretAccessKey: "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"!,
 });
 
 const db = new AWS.DynamoDB.DocumentClient();
